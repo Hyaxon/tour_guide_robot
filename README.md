@@ -58,7 +58,7 @@ Autonomous TurtleBot4 tour guide that navigates a mapped environment, visits pre
   * Battery-aware planning
   * Continue tour vs return home​
 
-## Sensors Used
+### Sensors Used
 
 * **LiDAR (RPLIDAR)** - Mapping, localization, obstacle detection
 * **Camera (OAK-D)** - AprilTag detection
