@@ -54,23 +54,6 @@ Autonomous TurtleBot4 tour guide that navigates a mapped environment, visits pre
 5. Interaction Controller scans for nearby people
 6. If interaction occurs, robot proceeds to next landmark
 7. If battery is low, robot returns to home base
-
-### Node Communication
-
-* Tour Deliberation Node → Locomotion Controller  
-  * Sends: goal poses  
-
-* Landmark Manager → Tour Deliberation Node  
-  * Provides: landmark data (poses, tag IDs)  
-
-* AprilTag Scanner → Tour Deliberation Node  
-  * Sends: tag detections / confirmation  
-
-* Interaction Controller → Tour Deliberation Node  
-  * Sends: interaction status (person detected, done waiting)  
-
-* Sensors → Nav2 / SLAM  
-  * LiDAR, odometry, and camera data
   
 ### Limitations
 
@@ -123,6 +106,23 @@ Autonomous TurtleBot4 tour guide that navigates a mapped environment, visits pre
   * Determine landmark ordering
   * Battery-aware planning
   * Continue tour vs return home​
+
+### Node Communication
+
+* Tour Deliberation Node → Locomotion Controller  
+  * Sends: goal poses  
+
+* Landmark Manager → Tour Deliberation Node  
+  * Provides: landmark data (poses, tag IDs)  
+
+* AprilTag Scanner → Tour Deliberation Node  
+  * Sends: tag detections / confirmation  
+
+* Interaction Controller → Tour Deliberation Node  
+  * Sends: interaction status (person detected, done waiting)  
+
+* Sensors → Nav2 / SLAM  
+  * LiDAR, odometry, and camera data
 
 ## Project File Structure
 
