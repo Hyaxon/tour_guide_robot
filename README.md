@@ -1,8 +1,8 @@
 # tour_guide_robot
 
+Autonomous TurtleBot4 tour guide that navigates a mapped environment, visits predefined landmarks, and interacts with nearby people using a hybrid deliberative and reactive architecture.
 
-
-## Overview 
+## Overview
 
 ### Robot Duties
 
@@ -65,16 +65,18 @@
 * **Encoders** - Odometry
 * **Bumpers** - Collision detection
 
-## Dependencies
+### Dependencies
 
+* Turtlebot4
 * ROS 2
-* Nav2
-* Gazebo
+* Nav2 (`navigation2`, `nav2_bringup`)
+* Gazebo Harmonic
 * SLAM Toolbox
 * apriltag_ros
 * TF2
+* RViz2
 
-## Behaviors
+### Behaviors
 
 * Human Detection
   * The robot performs a local scan at each landmark
@@ -87,3 +89,41 @@
   * While waiting, it continuously checks for the presence of the tag
   * If the tag is no longer visible, the robot assumes the door has been opened
   * The robot then proceeds through the doorway
+
+### System Flow
+
+1. Robot initializes and loads the environment map
+2. Tour Deliberation Node selects the next landmark
+3. Locomotion Controller navigates to the landmark using Nav2
+4. AprilTag Scanner confirms arrival and refines pose
+5. Interaction Controller scans for nearby people
+6. If interaction occurs, robot proceeds to next landmark
+7. If battery is low, robot returns to home base
+
+### Node Communication
+
+* Tour Deliberation Node → Locomotion Controller  
+  * Sends: goal poses  
+
+* Landmark Manager → Tour Deliberation Node  
+  * Provides: landmark data (poses, tag IDs)  
+
+* AprilTag Scanner → Tour Deliberation Node  
+  * Sends: tag detections / confirmation  
+
+* Interaction Controller → Tour Deliberation Node  
+  * Sends: interaction status (person detected, done waiting)  
+
+* Sensors → Nav2 / SLAM  
+  * LiDAR, odometry, and camera data
+  
+### Limitations
+
+* Human detection is approximated using LiDAR and may misidentify objects
+* Requires a prebuilt map of the environment
+
+### Potential Improvements
+
+## Project File Structure
+
+## Setup and Execution
