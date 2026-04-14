@@ -13,51 +13,6 @@ Autonomous TurtleBot4 tour guide that navigates a mapped environment, visits pre
 * Returns to home base based on battery constraints
 * Waits for human assistance when navigating doorways using AprilTags
 
-## Modules
-
-### Locomotion Controller
-
-* Uses Nav2 for:
-  * Global path planning
-  * Path execution
-  * Obstacle avoidance
-
-* Accepts goal positions from Landmark Manager and navigates to them
-
-### Landmark Manager
-
-* Stores:
-  * Landmark poses
-  * Associated AprilTag IDs
-  * Metadata (e.g., doorway, interaction behavior)
-
-### AprilTag Scanner
-
-* Uses `apriltag_ros`
-* Detects tags at:
-  * Landmarks
-  * Doors
-* Used for:
-  * Landmark confirmation
-  * Pose refinement
-  * Door state detection
-  
-### Interaction Controller
-
-* Handles:
-  * Scanning and waiting for nearby people when at a landmark
-  * Door-wait behavior
-* Determines when:
-  * Proceed through a doorway
-  * Move to the next location
-
-### Tour Deliberation Node
-
-* High-level decision making:
-  * Determine landmark ordering
-  * Battery-aware planning
-  * Continue tour vs return home​
-
 ### Sensors Used
 
 * **LiDAR (RPLIDAR)** - Mapping, localization, obstacle detection
@@ -123,6 +78,51 @@ Autonomous TurtleBot4 tour guide that navigates a mapped environment, visits pre
 * Requires a prebuilt map of the environment
 
 ### Potential Improvements
+
+## Modules
+
+### Locomotion Controller
+
+* Uses Nav2 for:
+  * Global path planning
+  * Path execution
+  * Obstacle avoidance
+
+* Accepts goal positions from Landmark Manager and navigates to them
+
+### Landmark Manager
+
+* Stores:
+  * Landmark poses
+  * Associated AprilTag IDs
+  * Metadata (e.g., doorway, interaction behavior)
+
+### AprilTag Scanner
+
+* Uses `apriltag_ros`
+* Detects tags at:
+  * Landmarks
+  * Doors
+* Used for:
+  * Landmark confirmation
+  * Pose refinement
+  * Door state detection
+  
+### Interaction Controller
+
+* Handles:
+  * Scanning and waiting for nearby people when at a landmark
+  * Door-wait behavior
+* Determines when:
+  * Proceed through a doorway
+  * Move to the next location
+
+### Tour Deliberation Node
+
+* High-level decision making:
+  * Determine landmark ordering
+  * Battery-aware planning
+  * Continue tour vs return home​
 
 ## Project File Structure
 
